@@ -63,10 +63,10 @@ class robotArmGUI(Node):
             cameraTargetPosition=[0, 0, 0.1], 
             cameraUpVector=[0, 0, 1] 
         )
-        # print(1)
         self.projection_matrix = p.computeProjectionMatrixFOV(
             fov=15, aspect=1, nearVal=0.1, farVal=3
         )
+
         self.update_pybullet_view()
 
     def update_pybullet(self,msg):
@@ -84,8 +84,8 @@ class robotArmGUI(Node):
         # Convert RGB to Image
         rgb_array = np.array(rgb, dtype=np.uint8)[:, :, :3] 
         img = Image.fromarray(np.array(rgb_array, dtype=np.uint8), 'RGB')
-
         img = ImageTk.PhotoImage(img)
+        
         # Update Canvas
         self.canvas.config(image=img)
         self.canvas.image = img  
